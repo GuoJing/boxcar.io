@@ -23,7 +23,7 @@ class Provider(object):
         r = requests.post(url=url, data=data)
         return r.json()
 
-    def _gen_data(**kargs):
+    def _gen_data(self, **kargs):
         emails = kargs.get('emails', None)
         message = kargs.get('message', None)
         source_url = kargs.get('source_url', None)
@@ -35,7 +35,7 @@ class Provider(object):
         data['notification[from_screen_name]'] = from_screen_name
         data['notification[message]'] = message
 
-        r = random.randint()
+        r = random.randint(0, 40000)
         if not from_remote_service_id:
             data['notification[from_remote_service_id]'] = r
         if source_url:
